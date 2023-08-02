@@ -1,0 +1,49 @@
+/* Problem 1 */
+FUNCTION sum_of_distinct_elements(set1, set2):
+    merged_array = []
+    FOR element IN set1:
+        APPEND element TO merged_array
+    FOR element IN set2:
+        APPEND element TO merged_array
+
+    distinct_elements = []
+    FOR element IN merged_array:
+        IF element NOT IN distinct_elements:
+            APPEND element TO distinct_elements
+
+    sum_distinct = 0
+    FOR element IN distinct_elements:
+        sum_distinct += element
+
+    RETURN sum_distinct
+END FUNCTION
+
+
+
+/* Problem 2 */
+FUNCTION dot_product(v1, v2):
+    IF LENGTH(v1) != LENGTH(v2):
+        PRINT "Error: Vectors must be of the same length."
+        RETURN 0
+        
+    ps = 0
+    FOR i FROM 0 TO LENGTH(v1) - 1 DO
+        ps = ps + (v1[i] * v2[i])
+    END_FOR
+    
+    RETURN ps
+END_FUNCTION
+
+ALGORITHM determine_orthogonal(n):
+    FOR i FROM 1 TO n DO
+        READ v1, v2  // Read the two vectors from input
+        
+        ps = dot_product(v1, v2)  // Calculate the dot product using the function
+        
+        IF ps == 0:
+            PRINT "Vectors are orthogonal."
+        ELSE:
+            PRINT "Vectors are not orthogonal."
+        END_IF
+    END_FOR
+END_ALGORITHM
